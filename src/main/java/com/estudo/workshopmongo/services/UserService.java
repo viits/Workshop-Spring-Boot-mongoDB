@@ -44,4 +44,14 @@ public class UserService {
 		
 	}
 	
+	public User updade(User user) {
+		Optional<User> userObj = userRepository.findById(user.getId());
+		updateData(userObj.get(),user);
+		return userRepository.save(userObj.get());
+	}
+	private void updateData(User userObj,User user) {
+		userObj.setName(user.getName());
+		userObj.setEmail(user.getEmail());
+	}
+	
 }
